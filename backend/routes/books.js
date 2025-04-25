@@ -47,13 +47,14 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a book
-router.delete('/:id', async (req, res) => {  // Fixed the DELETE route
-  try {
-    const book = await Book.findById(req.params.id);  // Use ID to find the book
-    if (!book) return res.status(404).json({ message: 'Book not found' });
 
-    await book.remove();
-    res.json({ message: 'Book deleted' });
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedBook = await Book.findByIdAndDelete(req.params.id);
+    if (!deletedBook) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+    res.json({ message: 'Book deleted successfully' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

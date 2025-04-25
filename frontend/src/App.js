@@ -33,10 +33,10 @@ import React, { useState, useEffect } from 'react';
          e.preventDefault();
          try {
            if (editId) {
-             await axios.put(`/${editId}`, form);
+             await axios.put(`https://book-store-dcah.onrender.com/api/books/${editId}`, form);
              setEditId(null);
            } else {
-             await axios.post('https://book-store-dcah.onrender.com', form);
+             await axios.post('https://book-store-dcah.onrender.com/api/books', form);
            }
            setForm({ title: '', author: '', category: '', publishedYear: '' });
            fetchBooks();
@@ -57,7 +57,7 @@ import React, { useState, useEffect } from 'react';
 
        const handleDelete = async (id) => {
          try {
-           await axios.delete(`https://book-store-dcah.onrender.com/${id}`);
+           await axios.delete(`https://book-store-dcah.onrender.com/api/books/${id}`);
            fetchBooks();
          } catch (error) {
            console.error('Error deleting book:', error);
