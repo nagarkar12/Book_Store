@@ -23,10 +23,10 @@ mongoose.connect(process.env.MONGO_URI, {
 // Use Routes
 app.use('/api/books', bookRoutes);
 
-// Default Route (Optional)
-app.get('/', (req, res) => {
-  res.send('Book Store Backend');
-});
+// // Default Route (Optional)
+// app.get('/', (req, res) => {
+//   res.send('Book Store Backend');
+// });
 
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {

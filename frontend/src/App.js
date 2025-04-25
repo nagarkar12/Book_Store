@@ -18,7 +18,7 @@ import React, { useState, useEffect } from 'react';
 
        const fetchBooks = async () => {
          try {
-           const response = await axios.get('http://localhost:5000/api/books');
+           const response = await axios.get("https://book-store-dcah.onrender.com/api/books");
            setBooks(response.data);
          } catch (error) {
            console.error('Error fetching books:', error);
@@ -33,10 +33,10 @@ import React, { useState, useEffect } from 'react';
          e.preventDefault();
          try {
            if (editId) {
-             await axios.put(`http://localhost:5000/api/books/${editId}`, form);
+             await axios.put(`/${editId}`, form);
              setEditId(null);
            } else {
-             await axios.post('http://localhost:5000/api/books', form);
+             await axios.post('https://book-store-dcah.onrender.com', form);
            }
            setForm({ title: '', author: '', category: '', publishedYear: '' });
            fetchBooks();
@@ -57,7 +57,7 @@ import React, { useState, useEffect } from 'react';
 
        const handleDelete = async (id) => {
          try {
-           await axios.delete(`http://localhost:5000/api/books/${id}`);
+           await axios.delete(`https://book-store-dcah.onrender.com/${id}`);
            fetchBooks();
          } catch (error) {
            console.error('Error deleting book:', error);
